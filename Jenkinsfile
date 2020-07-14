@@ -23,20 +23,20 @@ stages{
             }
         }
 
-        // stage ('Deployments'){
-        //     parallel{
-        //         stage ('Deploy to Staging'){
-        //             steps {
-        //                 sh "scp -i C:/Users/cigar621/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
-        //             }
-        //         }
+        stage ('Deployments'){
+            parallel{
+                stage ('Deploy to Staging'){
+                    steps {
+                        bat "scp -i C:/Users/cigar621/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
+                    }
+                }
 
-        //         stage ("Deploy to Production"){
-        //             steps {
-        //                 sh "scp -i C:/Users/cigar621/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
-        //             }
-        //         }
-        //     }
-        // }
+                stage ("Deploy to Production"){
+                    steps {
+                        bat "scp -i C:/Users/cigar621/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
+                    }
+                }
+            }
+        }
     }
 }
