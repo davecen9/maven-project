@@ -34,11 +34,11 @@ pipeline {
 //                 }
 
 //                 stage ("Deploy to Production"){
-//                     steps {
-//                         // sh "scp -i C:/Users/cigar621/.ssh/admin.pem **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
-// 						bat "scp -i C:\\Program Files (x86)\\Jenkins\\users\\admin_3253877136088834990\\.ssh\\jenkinskey **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
+                    // steps {
+                    //     // sh "scp -i C:/Users/cigar621/.ssh/admin.pem **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
+					// 	bat "scp -i C:\\Program Files (x86)\\Jenkins\\users\\admin_3253877136088834990\\.ssh\\jenkinskey **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
 						
-//                     }
+                    // }
 //                 }
 //             }
 //         }
@@ -60,13 +60,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat 'scp -i C:/Users/cigar621/.ssh/admin **/target/*.war ec2-user@${params.tomcat_dev}:/home/ec2-user/apache-tomcat-9.0.37/webapps'
+                        bat "scp -i C:/Users/cigar621/.ssh/admin **/target/*.war ec2-user@${params.tomcat_dev}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
                     }
                 }
  
                 stage ("Deploy to Production"){
                     steps {
-                        bat 'scp -i C:/Users/cigar621/.ssh/admin **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps'
+                        bat "scp -i C:/Users/cigar621/.ssh/admin **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
                     }
                 }
             }
