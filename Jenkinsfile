@@ -28,7 +28,7 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-						sshagent(['deploy_user']) {
+						sshagent(['tomcat-demo']) {
 							sh "scp -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_dev}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
 						}
                         
@@ -37,7 +37,7 @@ stages{
  
                 stage ("Deploy to Production"){
                     steps {
-						sshagent(['deploy_user']) {
+						sshagent(['tomcat-demo']) {
     						sh "scp -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
 						}
                         
