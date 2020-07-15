@@ -28,7 +28,7 @@ stages{
                 stage ('Deploy to Staging'){
                     steps {
                     	// sh "scp -i C:/Users/cigar621/.ssh/admin.pem **/target/*.war ec2-user@${params.tomcat_dev}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
-						bat "scp -i C:/Users/cigar621/.ssh/admin **/target/*.war ec2-user@${params.tomcat_dev}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
+						bat "scp -i C:/Users/cigar621/.ssh/cigar621 **/target/*.war ec2-user@${params.tomcat_dev}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
 				
 					}
                 }
@@ -36,7 +36,7 @@ stages{
                 stage ("Deploy to Production"){
                     steps {
                         // sh "scp -i C:/Users/cigar621/.ssh/admin.pem **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
-						bat "scp -i C:/Users/cigar621/.ssh/admin **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
+						bat "scp -i C:/Users/cigar621/.ssh/cigar621 **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
 						
                     }
                 }
