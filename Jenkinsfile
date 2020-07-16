@@ -37,9 +37,9 @@ stages{
  
                 stage ("Deploy to Production"){
                     steps {
-						sshagent(['tomcat-demo']) {
-    						sh "scp -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
-						}
+				
+    						sh "scp i c:/users/cigar621/.ssh/jenkinssss.pem **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
+						
                         
                     }
                 }
