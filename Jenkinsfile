@@ -30,7 +30,7 @@ stages{
                     steps {
 					
 							// sh "scp -i -v c:/users/cigar621/.ssh/jenkinssss.pem **/target/*.war ec2-user@${params.tomcat_stage}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
-                            sh "ssh -i -v c:/users/cigar621/.ssh/jenkinssss.pem  ec2-user@${params.tomcat_stage}"
+                            sh "ssh -i c:/users/cigar621/.ssh/jenkinssss.pem  ec2-user@${params.tomcat_stage}"
                         
                     }
                 }
