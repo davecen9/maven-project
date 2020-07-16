@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
          string(name: 'tomcat_stage', defaultValue: '34.203.77.33', description: 'Staging Server')
-        //  string(name: 'tomcat_prod', defaultValue: '54.172.97.121', description: 'Production Server')
+         string(name: 'tomcat_prod', defaultValue: '54.174.208.127', description: 'Production Server')
     }
 
     triggers {
@@ -28,26 +28,21 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-						// sshagent(['jenkinssss']) {
+					
 							sh "scp -i c:/users/cigar621/.ssh/jenkinssss.pem **/target/*.war ec2-user@${params.tomcat_stage}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
-							// sh "scp -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_dev}:~"
-							// sh "ssh -vvv -o StrictHostKeyChecking=no ec2-user@${params.tomcat_stage}"
-                            //  sh "ssh -v -i c:/users/cigar621/.ssh/jenkinssss.pem ec2-user@${params.tomcat_stage}"
-							echo "done.."
-						// }
-                       
+
                         
                     }
                 }
  
-                // stage ("Deploy to Production"){
-                //     steps {
-				// 		sshagent(['tomcat-demo']) {
-    			// 			sh "scp -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
-				// 		}
+                stage ("Deploy to Production"){
+                    steps {
+						sshagent(['tomcat-demo']) {
+    						sh "scp -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
+						}
                         
-                //     }
-                // }
+                    }
+                }
             }
         }
     }
