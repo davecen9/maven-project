@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
          string(name: 'tomcat_stage', defaultValue: '34.203.77.33', description: 'Staging Server')
-        //  string(name: 'tomcat_prod', defaultValue: '54.174.208.127', description: 'Production Server')
+         string(name: 'tomcat_prod', defaultValue: '54.174.208.127', description: 'Production Server')
     }
 
     triggers {
@@ -29,7 +29,7 @@ stages{
                 stage ('Deploy to Staging'){
                     steps {
 					
-							sh "scp -i -v c:/users/cigar621/.ssh/jenkinssss.pem **/target/*.war ec2-user@${params.tomcat_stage}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
+							sh "scp -i c:/users/cigar621/.ssh/jenkinssss.pem **/target/*.war ec2-user@${params.tomcat_stage}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
                             // sh "ssh -i c:/users/cigar621/.ssh/jenkinssss.pem  ec2-user@${params.tomcat_stage}"
                         
                     }
