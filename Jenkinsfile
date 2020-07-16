@@ -28,7 +28,7 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-						sshagent(['admin']) {
+						sshagent(['jenkintest']) {
 							// sh "scp -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_dev}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
 							// sh "scp -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_dev}:~"
 							sh "ssh -v -o StrictHostKeyChecking=no ec2-user@${params.tomcat_dev}"
