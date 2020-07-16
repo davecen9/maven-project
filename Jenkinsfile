@@ -35,14 +35,14 @@ stages{
                     }
                 }
  
-                // stage ("Deploy to Production"){
-                //     steps {
+                stage ("Deploy to Production"){
+                    steps {
 				
-    			// 			sh "scp i -v c:/users/cigar621/.ssh/jenkinssss.pem **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
+    						sh "scp i c:/users/cigar621/.ssh/jenkinssss.pem **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user/apache-tomcat-9.0.37/webapps"
 						
                         
-                //     }
-                // }
+                    }
+                }
             }
         }
     }
